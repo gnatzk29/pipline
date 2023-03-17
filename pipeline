@@ -1,0 +1,15 @@
+sudo chmod 666 /var/run/docker.sock
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                git credentialsId: 'ubuntu', url: 'https://github.com/Profesor123456/Wordpress.git'
+                sh "docker-compose up -d"
+            }
+          
+        }
+    }
+}
